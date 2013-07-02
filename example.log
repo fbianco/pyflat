@@ -1,0 +1,69 @@
+Console output using the flatFile module
+
+fbianco@Magnesium:~/unige/devel/analysis/pyflat$ ipython
+importPython 2.7.2+ (default, Oct  5 2011, 10:41:47)
+Type "copyright", "credits" or "license" for more information.
+
+IPython 0.10.2 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object'. ?object also works, ?? prints more.
+
+In [2]: import flatfile
+
+In [3]: ff = flatfile.FlatFile('testfiles/topo.flat')
+
+In [4]: ff.
+ff.__class__              ff._readString            ff.data                   ff.experimentInfo         ff.isVPointSpectroscopy
+ff.__doc__                ff._reshapeData           ff.dataItemSize           ff.file                   ff.isZPointSpectroscopy
+ff.__init__               ff.axis                   ff.dataView               ff.filename               ff.offset
+ff.__module__             ff.brickletSize           ff.dimension              ff.getData                ff.openFlatFile
+ff._readDouble            ff.channel                ff.experimentDeployement  ff.isGridSpectroscopy     ff.rawData
+ff._readInt               ff.creationInformation    ff.experimentElement      ff.isTopography  
+
+In [5]: ff
+Out[5]: <flatFile.FlatFile instance at 0x23f1a70>
+
+In [6]: ff.data
+Out[6]:
+[<flatFile.DataArray instance at 0x23f1b90>,
+ <flatFile.DataArray instance at 0x23f9488>]
+
+In [7]: d = flatFile.load('testfiles/topo.flat')
+
+In [8]: d
+Out[8]:
+[<flatFile.DataArray instance at 0x2403908>,
+ <flatFile.DataArray instance at 0x2403ab8>]
+
+In [9]: d[0].data
+Out[9]:
+array([[ -7.87168475e-08,  -7.87148594e-08,  -7.87119654e-08, ...,
+         -7.82497582e-08,  -7.82469546e-08,  -7.82476308e-08],
+       [ -7.86675121e-08,  -7.86692710e-08,  -7.86670239e-08, ...,
+         -7.82393152e-08,  -7.82392295e-08,  -7.82381743e-08],
+       [ -7.86766371e-08,  -7.86759361e-08,  -7.86719034e-08, ...,
+         -7.82380216e-08,  -7.82370466e-08,  -7.82343367e-08],
+       ...,
+       [ -7.78334160e-08,  -7.78341903e-08,  -7.78316691e-08, ...,
+         -7.73945831e-08,  -7.73955403e-08,  -7.73895228e-08],
+       [ -7.78371005e-08,  -7.78386678e-08,  -7.78352540e-08, ...,
+         -7.73946012e-08,  -7.73920209e-08,  -7.73888573e-08],
+       [ -7.78426504e-08,  -7.78427205e-08,  -7.78421120e-08, ...,
+         -7.73954124e-08,  -7.73937712e-08,  -7.73908372e-08]])
+
+In [11]: d[0].info
+Out[11]:
+{'comment': 'up-bwd',
+ 'current': 5e-10,
+ 'filename': 'testfiles/topo.flat',
+ 'type': 'topo',
+ 'unitxy': 'nm',
+ 'vgap': -3.5,
+ 'xinc': 2.506265664160388e-11,
+ 'xreal': 10.025062656641552,
+ 'xres': 400,
+ 'yinc': 2.5125628140703607e-11,
+ 'yreal': 5.025125628140722,
+ 'yres': 200}
