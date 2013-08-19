@@ -10,7 +10,7 @@ follows the Omicron Flat File Format documentation.
 
 Infos
 -----
-flatFile.py written by François Bianco, University of Geneva - francois.bianco@unige.ch
+flatfile.py written by François Bianco, University of Geneva - francois.bianco@unige.ch
 
 Usage
 -----
